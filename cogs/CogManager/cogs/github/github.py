@@ -47,7 +47,7 @@ class GitHub(commands.Cog):
             new_sub = self.PARENT_REPO.create_submodule(name=sub_name, path=str(self.TEST_REPO_DIR),
                                                         url=github_repo_url)
             new_sub.set_parent_commit(None)
-            self.PARENT_REPO.git.commit(message=f"Added new Submodule: {sub_name}")
+            # self.PARENT_REPO.git.commit(message=f"Added new Submodule: {sub_name}")
             # self.PARENT_REPO.git.push()
         else:
             await ctx.send("The repository must be within the ACM GitHub Organization")

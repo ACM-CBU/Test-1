@@ -1,0 +1,3 @@
+[submodule "TestTemplate"]
+	url = https://github.com/ACM-CBU/TestCogTemplate
+	path = TestCogs/TestTemplate

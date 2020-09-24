@@ -44,7 +44,7 @@ class GitHub(commands.Cog):
             await ctx.send_help()
         if 'github.com/ACM-CBU/' in github_repo_url and len(github_repo_url.split('/')) > 4:
             sub_name = github_repo_url.split('/')[-1]
-            new_sub = self.PARENT_REPO.create_submodule(name=sub_name, path=str(self.TEST_REPO_DIR),
+            new_sub = self.PARENT_REPO.create_submodule(name=sub_name, path=str(self.TEST_REPO_DIR.joinpath(sub_name)),
                                                         url=github_repo_url)
             new_sub.set_parent_commit(None)
             await ctx.send(f"added submodule {new_sub.name}")

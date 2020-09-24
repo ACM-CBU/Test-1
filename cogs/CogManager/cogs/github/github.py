@@ -52,6 +52,8 @@ class GitHub(commands.Cog):
         else:
             await ctx.send("The repository must be within the ACM GitHub Organization")
 
+    @checks.admin_or_permissions()
+    @commands.command()
     async def updateSubmodule(self, ctx: Context, submodule_name):
         if not submodule_name:
             await ctx.send_help()
@@ -62,6 +64,8 @@ class GitHub(commands.Cog):
         except:
             await ctx.send(f"Could not find submodule: {submodule_name}")
 
+    @checks.admin_or_permissions()
+    @commands.command()
     async def deleteSubmodule(self, ctx: Context, submodule_name):
         if not submodule_name:
             await ctx.send_help()

@@ -51,3 +51,13 @@ class GitHub(commands.Cog):
             # self.PARENT_REPO.git.push()
         else:
             await ctx.send("The repository must be within the ACM GitHub Organization")
+
+    async def updateSubmodule(self, ctx: Context, submodule_name):
+        if not submodule_name:
+            await ctx.send_help()
+        try:
+            submodule = self.PARENT_REPO.submodule(name=submodule_name)
+            sub_repo = submodule.module()
+            await ctx.send(sub_repo.git.pull())
+        except:
+            await ctx.send(f"Could not find submodule: {submodule_name}")

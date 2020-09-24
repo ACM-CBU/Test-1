@@ -47,8 +47,10 @@ class GitHub(commands.Cog):
             new_sub = self.PARENT_REPO.create_submodule(name=sub_name, path=str(self.TEST_REPO_DIR),
                                                         url=github_repo_url)
             new_sub.set_parent_commit(None)
+            await ctx.send(f"added submodule {new_sub.name}")
             # self.PARENT_REPO.git.commit(message=f"Added new Submodule: {sub_name}")
             # self.PARENT_REPO.git.push()
+
         else:
             await ctx.send("The repository must be within the ACM GitHub Organization")
 
@@ -71,7 +73,7 @@ class GitHub(commands.Cog):
             await ctx.send_help()
         try:
             submodule = self.PARENT_REPO.submodule(name=submodule_name)
-            sub_repo = submodule.remove()
+            submodule.remove()
             await ctx.send(f'Deleted submodule: {submodule_name}')
         except:
             await ctx.send(f"Could not find submodule: {submodule_name}")
